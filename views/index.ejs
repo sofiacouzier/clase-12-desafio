@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+    <script src="./socket.io/socket.io.js"></script>
+</head>
+<style>
+    #container_chat.active>div:last-of-type,
+    #container_chat>div:first-of-type {
+        display: block;
+    }
+
+    #container_chat>div:last-of-type,
+    #container_chat.active>div:first-of-type {
+        display: none;
+    }
+</style>
+
+<body>
+    <h1>Chat</h1>
+    <div id="container_chat">
+        <div>
+
+            <form id="data_user">
+                <input type="text" name="name_user">
+                <input type="text" name="email_user">
+                <input type="submit" value="ingresar al chat">
+            </form>
+        </div>
+        <div style="display: flex; justify-content: space-around; max-width: 800px; width: 100%;">
+            <div>
+                <input type="text" name="inputtext" id="inputtext" placeholder="ingresa tu mensaje">
+                <button id="send_socket">Enviar</button>
+                <p id="parrafochat" style="background-color: #e2e2e2; color: black;padding: 20px;display: block;"></p>
+            </div>
+            <div class="users">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    let socket = null;
+    let student = null;
+    let container_chat = document.getElementById('container_chat');
+    let parrafochat = document.getElementById('parrafochat');
+
+    let form_data_user = document.getElementById('data_user');
+    form_data_user.addEventListener("submit", evt => {
+        evt.preventDefault();
+        student = {
+            name: evt.target[0].value,
+            email: evt.target[1].value
+        }
+        if (student.name == "" || student.email == "") window.location.reload();
+        socket = io();
+        socket.emit("addUser", student);
+        container_chat.classList = "active";
+        readSockets();
+    });
+
+    function readSockets(); {
+        loadChat();
+        socket.on("listenserver", data => {
+            console.log("recibiendo...")
+            let innerP = ``;
+            data.forEach(element => {
+                innerP += `<b>${element.user}:</b>${element.sms} </br>`
+            });
+            parrafochat.innerHTML = innerP;
+        })
+    }
+    function loadChat() {
+        socket.on("init", data => {
+            loadData(data)
+        });
+    }
+    function loadData() {
+        let innerP = ``;
+        data.forEach(element => {
+            innerP += `<b>${element.user}:</b>${element.sms} </br>`
+        });
+        parrafochat.innerHTML = innerP;
+    }
+
+
+
+
+
+
+</script>
+
+</html>
