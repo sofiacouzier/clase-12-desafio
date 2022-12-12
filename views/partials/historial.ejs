@@ -1,0 +1,33 @@
+<div>
+    <h2 style="color: blue;"> productos</h2>
+    <% if (productos.length> 0) { %>
+        <table class="table table-striped" style="margin: 30px;">
+            <thead>
+                <tr>
+                    <th scope="col" style="margin: 10px; font-size: medium;">nombre</th>
+                    <th scope="col" style="margin: 10px; font-size: medium;">precio</th>
+                    <th scope="col" style="margin: 10px; font-size: medium;">thumbnail</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <% for( producto of productos ) { %>
+                    <tr>
+                        <th style="margin: 60px; font-size: medium;">
+                            <%= producto.nombre %>
+                        </th>
+                        <th style="margin: 60px; font-size: medium;">
+                            <%= producto.precio %>
+                        </th>
+                        <th style="margin: 60px; font-size: medium;">
+                            <img style="width: 100px;" src="<%= producto.thumbnail %>" alt="new">
+                        </th>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+        <% } else {%>
+            <p class="alert alert-danger">no se encontro data</p>
+            <% }%>
+
+</div>

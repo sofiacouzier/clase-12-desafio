@@ -1,0 +1,23 @@
+[
+  {
+    "nombre": "cuadro",
+    "precio": 1000,
+    "thumbnail": "https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350",
+    "id": 0
+  },
+  {
+    "nombre": "cuadro abstracto",
+    "precio": "1500",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVUFYJleVUjBmlEH0YEbZPTFHrLG6OPrH50Q&usqp=CAU"
+  },
+  {
+    "nombre": "cuadro verde",
+    "precio": "2000",
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_867026-MLM32835692115_112019-O.jpg"
+  },
+  {
+    "nombre": "cuadro simple",
+    "precio": "1600",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVUFYJleVUjBmlEH0YEbZPTFHrLG6OPrH50Q&usqp=CAU"
+  }
+]

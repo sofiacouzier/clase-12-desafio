@@ -1,6 +1,6 @@
 const express = require("express");
 let app = express();
-const PORT = 3002;
+const PORT = 8080;
 let path = require("path");
 let { Server: HttpServer } = require("http");
 
@@ -14,8 +14,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
 
-// view engine
+const Container = require('./productos');
 
+// view engine
+app.set("views", "./views/ejs");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
